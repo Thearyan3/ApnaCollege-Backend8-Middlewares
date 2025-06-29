@@ -11,6 +11,15 @@ const app = express();
 //     next();
 // });
 
+app.use((req, res, next) => {
+    console.log("I am only for random");
+    next();
+});
+
+app.use((req, res) => {
+    res.send("Page not found!");
+});
+
 //logger - morgan(One of the famous and necessary middleware that every developer should know)
 app.use((req, res, next) => {
     req.time = new Date(Date.now()).toString();
